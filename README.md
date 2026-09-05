@@ -3,6 +3,7 @@
 
 **Evaluación Sumativa Unidad 3 – Desarrollo Frontend (IF200IINF, IPSS)**
 Estudiante: **Kevin Arriagada** (trabajo individual, autorizado por el docente)
+Demo en línea: `https://kevin4ndres.github.io/gestor-documental-frontend/` (modo demostración con API simulada)
 Repositorio: `https://github.com/kevin4ndres/gestor-documental-frontend`
 
 Aplicación web para que el **equipo directivo** de la escuela visualice, busque, registre, modifique y elimine su documentación institucional (memos, oficios, citaciones y acuerdos de apoderados, reuniones comunales y permisos administrativos). Es la **capa Frontend** del mismo proyecto desarrollado en *Desarrollo Backend* y consume su API REST.
