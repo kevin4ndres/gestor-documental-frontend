@@ -2,8 +2,8 @@
 ## Escuela Básica G-733 Chorombo Bajo (comuna de María Pinto)
 
 **Evaluación Sumativa Unidad 3 – Desarrollo Frontend (IF200IINF, IPSS)**
-Equipo: `NOMBRE_DEL_EQUIPO` — Integrantes: `Nombre 1`, `Nombre 2`, `Nombre 3`
-Repositorio: `https://github.com/USUARIO/gestor-documental-frontend`
+Estudiante: **Kevin Arriagada** (trabajo individual, autorizado por el docente)
+Repositorio: `https://github.com/kevin4ndres/gestor-documental-frontend`
 
 Aplicación web para que el **equipo directivo** de la escuela visualice, busque, registre, modifique y elimine su documentación institucional (memos, oficios, citaciones y acuerdos de apoderados, reuniones comunales y permisos administrativos). Es la **capa Frontend** del mismo proyecto desarrollado en *Desarrollo Backend* y consume su API REST.
 
@@ -128,7 +128,7 @@ El **store** (`state/store.js`) guarda `tipos`, `documentos`, `meta`, `filtros`,
 
 ### Pasos
 ```bash
-git clone https://github.com/USUARIO/gestor-documental-frontend.git
+git clone https://github.com/kevin4ndres/gestor-documental-frontend.git
 cd gestor-documental-frontend
 
 # Opción A: Python
@@ -287,17 +287,17 @@ Recomendaciones para producción (fuera del alcance de esta evaluación): servir
 
 ## 12. Control de versiones y trabajo colaborativo
 
-- Repositorio Git con historial de **commits descriptivos** en formato *Conventional Commits* (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`).
-- Rama `main` estable; funcionalidades desarrolladas en ramas `feature/*` (por ejemplo `feature/formulario-documento`, `feature/filtros`) integradas mediante *pull requests* con revisión de otro integrante.
-- Conflictos resueltos localmente antes del *merge*; la evidencia (capturas de PR, ramas y resolución) se guarda en `docs/capturas/`.
+El proyecto se desarrolló de forma **individual** (autorizado por el docente), por lo que el control de versiones se usó como herramienta de trazabilidad y de trabajo ordenado, siguiendo el mismo flujo que se aplicaría en equipo:
+
+- Repositorio Git con historial de **commits descriptivos** en formato *Conventional Commits* (`feat:`, `fix:`, `docs:`, `build:`, `chore:`), uno por funcionalidad o módulo, de modo que cada cambio se pueda revisar y revertir por separado.
+- Rama `main` estable; cada funcionalidad se trabajó en una rama `feature/*` (por ejemplo `feature/formulario-documento`) y se integró a `main` mediante *merge* una vez probada. La evidencia (capturas de `git log --graph` y de las ramas) se guarda en `docs/capturas/`.
+- Repositorio publicado en GitHub como respaldo y para la entrega del enlace.
 - `.gitignore` excluye archivos temporales del sistema y del editor.
 
 ```bash
-git log --oneline   # ver historial de cambios
-git branch -a       # ramas del proyecto
+git log --oneline --graph   # historial de cambios
+git branch -a               # ramas del proyecto
 ```
-
----
 
 ## 13. Despliegue
 
@@ -306,7 +306,7 @@ La aplicación es **estática**, por lo que puede desplegarse en cualquier servi
 **Entorno de prueba (recomendado): GitHub Pages**
 1. Subir el repositorio a GitHub.
 2. *Settings → Pages → Branch: main / root* → Guardar.
-3. La app queda en `https://USUARIO.github.io/gestor-documental-frontend/`.
+3. La app queda en `https://kevin4ndres.github.io/gestor-documental-frontend/`.
    Como GitHub Pages sirve por HTTPS y el Backend local por HTTP, en ese entorno la app funciona en **modo simulación**; para integración completa, desplegar el Backend en un servidor con HTTPS y ajustar `apiBaseUrl`.
 
 **Alternativa local reproducible (Apache/XAMPP):** copiar la carpeta a `htdocs/gestor-documental-frontend/` y abrir `http://localhost/gestor-documental-frontend/`. Ajustar `apiBaseUrl` si el Backend corre en otra URL.
@@ -321,19 +321,17 @@ La aplicación es **estática**, por lo que puede desplegarse en cualquier servi
 
 | # | Situación / problema | Mejora propuesta | Prioridad | Responsable propuesto | Acción a realizar |
 |---|---|---|---|---|---|
-| 1 | El campo "archivo asociado" es solo una referencia; el documento físico sigue fuera del sistema | Subida real de archivos (PDF/imagen) con vista previa y descarga | Alta | Integrante Backend + Frontend | Endpoint `POST /api/documentos/{id}/archivo` (multipart) y componente `ArchivoUploader` |
-| 2 | Cualquier persona con acceso a la URL puede modificar documentos | Autenticación de usuarios del equipo directivo y roles (lectura / edición) | Alta | Integrante Backend | Login con token, pantalla de acceso y ocultar acciones según rol |
-| 3 | Al eliminar no hay vuelta atrás | Papelera / eliminación lógica con restauración | Media | Integrante Frontend | Campo `eliminado_en` en el Backend y vista "Papelera" |
-| 4 | No hay forma de ver estadísticas rápidas | Panel resumen con conteo por tipo y documentos del mes | Media | Integrante Frontend | Componente `ResumenTipos` con `GET /api/documentos?tipo=` por categoría |
-| 5 | El orden del listado es fijo (fecha descendente) | Ordenar por columna (título, tipo, fecha) | Baja | Integrante Frontend | Parámetro `sort` en la API y cabeceras clicables con `aria-sort` |
+| 1 | El campo "archivo asociado" es solo una referencia; el documento físico sigue fuera del sistema | Subida real de archivos (PDF/imagen) con vista previa y descarga | Alta | Kevin Arriagada | Endpoint `POST /api/documentos/{id}/archivo` (multipart) y componente `ArchivoUploader` |
+| 2 | Cualquier persona con acceso a la URL puede modificar documentos | Autenticación de usuarios del equipo directivo y roles (lectura / edición) | Alta | Kevin Arriagada | Login con token, pantalla de acceso y ocultar acciones según rol |
+| 3 | Al eliminar no hay vuelta atrás | Papelera / eliminación lógica con restauración | Media | Kevin Arriagada | Campo `eliminado_en` en el Backend y vista "Papelera" |
+| 4 | No hay forma de ver estadísticas rápidas | Panel resumen con conteo por tipo y documentos del mes | Media | Kevin Arriagada | Componente `ResumenTipos` con `GET /api/documentos?tipo=` por categoría |
+| 5 | El orden del listado es fijo (fecha descendente) | Ordenar por columna (título, tipo, fecha) | Baja | Kevin Arriagada | Parámetro `sort` en la API y cabeceras clicables con `aria-sort` |
 
 ### Mejora implementada dentro de esta evaluación
 Se seleccionó y aplicó la **optimización del filtrado** (mejoras 1–3 de la sección 10: *debounce*, cancelación de peticiones y suscripción selectiva), porque en la revisión con el usuario de prueba el listado "parpadeaba" al escribir y en una ocasión mostró resultados de una búsqueda anterior. Era la mejora de mayor impacto en la experiencia y factible dentro del plazo.
 
-### Cómo se tomó la decisión y se gestionó la participación
-Al cierre del desarrollo el equipo realizó una retrospectiva breve (qué funcionó, qué no, qué mejorar). Cada integrante propuso mejoras; se puntuaron por **impacto para el equipo directivo** y **esfuerzo** y se eligió la de mejor relación. Las tareas se repartieron según la afinidad de cada integrante (Frontend, Backend, documentación/pruebas) y se registraron como *issues* en GitHub, revisándose mediante *pull requests*.
-
----
+### Cómo se tomó la decisión y se gestionó el trabajo
+Al cierre del desarrollo se realizó una retrospectiva individual breve (qué funcionó, qué no, qué mejorar), complementada con la retroalimentación del usuario de prueba. Las mejoras se anotaron como *issues* en GitHub y se puntuaron por **impacto para el equipo directivo** y **esfuerzo**; se eligió la de mejor relación entre ambos y que cabía en el plazo. Al ser un trabajo individual, la gestión de la participación consistió en planificar el trabajo por ramas/funcionalidades y en registrar cada avance con un commit descriptivo, lo que deja el proyecto listo para que se sume otra persona en la siguiente iteración.
 
 ## 15. Demostración
 
